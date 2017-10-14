@@ -5,7 +5,7 @@ $( document ).ready(function() {
   $("#chat-btn").mouseover(function() {
     $("#chat-icon").attr("src", "../resources/chat-icon-blue.png");
   })
-    
+
   .mouseout(function() {
     if (!$("#chat-btn").hasClass("menu-button-open")) {
       $("#chat-icon").attr("src", "../resources/chat-icon-grey.png");
@@ -19,7 +19,7 @@ $( document ).ready(function() {
   $("#calendar-btn").mouseover(function() {
     $("#calendar-icon").attr("src", "../resources/calendar-icon-blue.png");
   })
-    
+
   .mouseout(function() {
     if (!$("#calendar-btn").hasClass("menu-button-open")) {
       $("#calendar-icon").attr("src", "../resources/calendar-icon-grey.png");

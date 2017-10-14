@@ -7,6 +7,19 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
+var connection = require('tedious').Connection;
+var request = require('tedious').Request;
+
+var config =
+    {
+        userName: 'jlin332',
+        password: 'C-squared',
+        server: 'csquared.database.windows.net',
+        options: {
+            database: 'CsquaredDatabase'
+        }
+    }
+var conn = new connection(config);
 
 app.use(express.static(__dirname + '/public'));
 
@@ -23,7 +36,36 @@ io.on('connection', function(socket){
             });
         }
     });
+
+    socket.on('login', function(username, password) {
+        //handle login: query SQL table if not there then respond with error code
+        //fetch corresponding calendar
+        conn.on('connect', function(err)) {
+            if (err) {
+                console.log(err);
+            } else {
+                queryDatabase(username, password, function(responseCode));
+                if (responseCode == 1) {
+                    io.emit('logging in', username);
+                } else {
+                    io.emit('failed login');
+                }
+            }
+        }
+    });
+
+    socket.on('register', function(username, password) {
+        //handle register new user: insert row into table
+    });
 });
+
+function queryDatabase(username, password, responseCode) {
+    req = new request("SELECT COUNT(*) FROM Users WHERE Username="
+        + username + " and Password=" + password, function(err, rowCount, rows) {
+            responseCode(rowCount);
+        });
+    conn.execSql(req);
+}
 
 function bingSearch(msg, search) {
     bing.web(msg, {
