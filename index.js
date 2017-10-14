@@ -1,28 +1,42 @@
-// var http = require('http');
+// var http = require('http'),
+//     fs = require('fs'),
+//     express = require('express'),
+//     path = require('path');
 //
-// var server = http.createServer(function(request, response) {
+// var app = express();
+// app.use(express.static('public'));
 //
-//     response.writeHead(200, {"Content-Type": "text/plain"});
-//     response.end("Hello Xing Xing and Alex!");
-//
+// fs.readFile('./views/chat-page.html', function (err, html) {
+//     if (err) {
+//         throw err;
+//     }
+//     http.createServer(function(request, response) {
+//         response.writeHeader(200, {"Content-Type": "text/html"});
+//         response.write(html);
+//         response.end();
+//     }).listen(8000);
 // });
-//
-// var port = process.env.PORT || 1337;
-// server.listen(port);
-//
-// console.log("Server running at http://localhost:%d", port);
 
-var http = require('http'),
-    fs = require('fs');
+// app.get('/', function(req, res) {
+//     var html = fs.readFileSync('./views/chat-page.html');
+//     http.createServer(function(request, response) {
+//         response.writeHeader(200, {"Content-Type": "text/html"});
+//         response.write(res);
+//         response.end();
+//     }).listen(8000);
+// });
 
+var express = require("express");
+var app = express();
 
-fs.readFile('./Views/chat-page.html', function (err, html) {
-    if (err) {
-        throw err;
-    }
-    http.createServer(function(request, response) {
-        response.writeHeader(200, {"Content-Type": "text/html"});
-        response.write(html);
-        response.end();
-    }).listen(8000);
+app.use(express.static(__dirname + '/public'));
+//Store all JS and CSS in Scripts folder.
+
+app.get('/',function(req,res) {
+    res.sendFile(__dirname + '/public/views/chat-page.html');
+    //It will find and locate index.html from View or Scripts
 });
+
+app.listen(3000);
+
+console.log("Running at Port 3000");
