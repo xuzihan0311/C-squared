@@ -56,6 +56,9 @@
           $('#messages').append($('<li>').text(msg));
           window.scrollTo(0, document.body.scrollHeight);
         });
+        socket.on('bing-search', function(url) {
+            window.open(url);
+        });
       });
       </script>
     </div>

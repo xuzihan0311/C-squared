@@ -3,7 +3,10 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "fullcalendar": "^3.6.1"
+    "botbuilder": "^3.11.0",
+    "fullcalendar": "^3.6.1",
+    "node-bing-api": "^3.2.2",
+    "restify": "^6.0.1"
   },
   "main": "index.js",
   "devDependencies": {
