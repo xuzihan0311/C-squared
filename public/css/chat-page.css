@@ -33,7 +33,32 @@
 
 .chat-content {
     height: 100%;
-    width: 100%-82px;
     margin-left: 82px;
     z-index: 500
+}
+
+#msg-content {
+    height: 100%;
+    padding-bottom: 50px;
+    margin-bottom: 
+}
+
+#msg-input {
+    width: 100%;
+    padding-right: 82px;
+    background-color: #71b0b0;
+    margin-bottom: 2px;
+    border-right: 2px solid #ffffff;
+    z-index: 750;
+}
+
+#msg {
+    margin-right: 2px;
+}
+
+#send-msg-button {
+    background-color: #e2efef;
+    color: #0abab5;
+    font-weight: bold;
+    cursor: pointer;
 }
