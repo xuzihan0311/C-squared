@@ -1,12 +1,12 @@
 $( document ).ready(function() {
  
   $("#chat-button").mouseover(function() {
-    $("#chat-icon").attr("src", "../recourses/chat-icon-blue.png");
+    $("#chat-icon").attr("src", "../resources/chat-icon-blue.png");
   })
     
   .mouseout(function() {
     if (!$("#chat-button").hasClass("menu-button-open")) {
-      $("#chat-icon").attr("src", "../recourses/chat-icon-grey.png");
+      $("#chat-icon").attr("src", "../resources/chat-icon-grey.png");
     }
   });
  
@@ -15,12 +15,12 @@ $( document ).ready(function() {
   });
     
   $("#calendar-button").mouseover(function() {
-    $("#calendar-icon").attr("src", "../recourses/calendar-icon-blue.png");
+    $("#calendar-icon").attr("src", "../resources/calendar-icon-blue.png");
   })
     
   .mouseout(function() {
     if (!$("#calendar-button").hasClass("menu-button-open")) {
-      $("#calendar-icon").attr("src", "../recourses/calendar-icon-grey.png");
+      $("#calendar-icon").attr("src", "../resources/calendar-icon-grey.png");
     }
   });
  
