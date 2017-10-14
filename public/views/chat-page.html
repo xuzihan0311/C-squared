@@ -6,33 +6,26 @@
     <script src="../controls/libraries/jquery-3.2.1.min.js"></script>
     <script src="../controls/event.js"></script>
     <link rel="stylesheet" href="../css/chat-page.css">
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
   </head>
   <body class="no-margin">
-    <div id="login-content" style="">
-      <form id="login-form" action="">
+    <div id="guard-wrapper" style="display: none;">
+      <div id="guard-content">
+      </div>
+      <div id="login-content" style="">
+        <form id="login-form" action="">
+          <div class="container">
+            <label><font color="#858585"><b>Username</b></font></label>
+            <input class="vrf-input" type="text" placeholder="Enter Username" name="uname" required>
 
-        <div class="container">
-          <label><font color="#858585"><b>Username</b></font></label>
-          <input class="vrf-input" type="text" placeholder="Enter Username" name="uname" requtired>
+            <label><font color="#858585"><b>Password</b></font></label>
+            <input class="vrf-input" type="password" placeholder="Enter Password" name="psw" required>
 
-          <label><font color="#858585"><b>Password</b></font></label>
-          <input class="vrf-input" type="password" placeholder="Enter Password" name="psw" required>
-
-          <button id="register-btn" class="vrf-btn" type="submit">Register</button>
-          <button id="login-btn" class="vrf-btn" type="submit">Login</button>
-          <input id="rmb-btn" type="checkbox" checked="checked"><font color="#858585">Remember me</font></input>
-        </div>
-      </form>
+            <button id="register-btn" class="vrf-btn" type="submit">Register</button>
+            <button id="login-btn" class="vrf-btn" type="submit">Login</button>
+            <input id="rmb-btn" type="checkbox" checked="checked"><font color="#858585">Remember me</font></input>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="header no-margin">
       <div style="text-align: center;">
@@ -40,13 +33,16 @@
           <img src="../resources/logo.png" alt="C-squared" style="margin-top: 7px;">
         </a>
       </div>
+      <div id="profile-btn">
+        <img id="profile-icon" src="../resources/profile-icon-grey.png" alt="Profile">
+      </div>
     </div>
     <div class="menu-bar">
-      <div id="chat-button" class="menu-button menu-button-open" style="text-align: center;">
-        <img id="chat-icon" src="../resources/chat-icon-blue.png" alt="C-squared" style="margin-top: 10px;">
+      <div id="chat-btnn" class="menu-button menu-button-open" style="text-align: center;">
+        <img id="chat-icon" src="../resources/chat-icon-blue.png" alt="Chat" style="margin-top: 10px;">
       </div>
-      <div id="calendar-button" class="menu-button" style="text-align: center;">
-        <img id="calendar-icon" src="../resources/calendar-icon-grey.png" alt="C-squared" style="margin-top: 10px;">
+      <div id="calendar-btn" class="menu-button" style="text-align: center;">
+        <img id="calendar-icon" src="../resources/calendar-icon-grey.png" alt="Calendar" style="margin-top: 10px;">
       </div>
     </div>
     <div class="chat-content">
@@ -64,6 +60,7 @@
         console.log("do something");
         var socket = io();
         $('form').submit(function(){
+          // disallow empty msgs
           socket.emit('chat message', $('#m').val());
           $('#m').val('');
           return false;
