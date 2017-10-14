@@ -1,0 +1,27 @@
+.no-margin {
+    margin: 0;
+    padding: 0;
+    height: 100%
+}
+
+.header {
+    height: 50px;
+    width: 100%;
+    border-bottom: 3px solid #0abab5;
+    z-index: 1000;
+}
+
+.menu-bar {
+    float: left !important;
+    height: 100%;
+    width: 100px;
+    border-right: 3px solid #0abab5;
+    z-index: 500;
+}
+
+.chat-content {
+    height: 100%;
+    width: 100%-100px;
+    margin-left: 100px;
+    z-index: 500
+}
