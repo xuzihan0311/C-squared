@@ -7,21 +7,33 @@
 .header {
     height: 50px;
     width: 100%;
-    border-bottom: 3px solid #0abab5;
+    border-bottom: 2px solid #71b0b0;
     z-index: 1000;
 }
 
 .menu-bar {
     float: left !important;
     height: 100%;
-    width: 100px;
-    border-right: 3px solid #0abab5;
+    width: 80px;
+    background-color: #e2efef;
+    border-right: 2px solid #71b0b0;
     z-index: 500;
+}
+
+.menu-button-open {
+    background-color: #ffffff;
+}
+
+.menu-button {
+    height: 75px;
+    width: 100%;
+    margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .chat-content {
     height: 100%;
-    width: 100%-100px;
-    margin-left: 100px;
+    width: 100%-82px;
+    margin-left: 82px;
     z-index: 500
 }
