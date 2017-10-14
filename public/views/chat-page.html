@@ -18,6 +18,22 @@
     </style>
   </head>
   <body class="no-margin">
+    <div id="login-content" style="">
+      <form id="login-form" action="">
+
+        <div class="container">
+          <label><font color="#858585"><b>Username</b></font></label>
+          <input class="vrf-input" type="text" placeholder="Enter Username" name="uname" requtired>
+
+          <label><font color="#858585"><b>Password</b></font></label>
+          <input class="vrf-input" type="password" placeholder="Enter Password" name="psw" required>
+
+          <button id="register-btn" class="vrf-btn" type="submit">Register</button>
+          <button id="login-btn" class="vrf-btn" type="submit">Login</button>
+          <input id="rmb-btn" type="checkbox" checked="checked"><font color="#858585">Remember me</font></input>
+        </div>
+      </form>
+    </div>
     <div class="header no-margin">
       <div style="text-align: center;">
         <a href="">
@@ -39,7 +55,7 @@
       </div>
       <form id="msg-input" action="">
         <input id="m" autocomplete="off" />
-        <button id="send-msg-button">Send</button>
+        <button id="send-msg-btn">Send</button>
       </form>
       <script src="/socket.io/socket.io.js"></script>
       <script src="https://code.jquery.com/jquery-1.11.1.js"></script>

@@ -1,4 +1,6 @@
 $( document ).ready(function() {
+  
+  
  
   $("#chat-button").mouseover(function() {
     $("#chat-icon").attr("src", "../resources/chat-icon-blue.png");
