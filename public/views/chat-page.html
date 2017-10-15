@@ -3,7 +3,10 @@
 <html class="no-margin">
   <head>
     <title>C-squared</title>
+    <link rel='stylesheet' href='../css/libraries/fullcalendar.css' />
     <script src="../controls/libraries/jquery-3.2.1.min.js"></script>
+    <script src='../controls/libraries/moment.min.js'></script>
+    <script src='../controls/libraries/fullcalendar.js'></script>
     <script src="../controls/event.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
@@ -16,15 +19,11 @@
     <link rel="stylesheet" href="../css/chat-page.css">
   </head>
   <body class="no-margin">
-    <div id="guard-wrapper" style="display: none;">
+    <div id="guard-wrapper" style="">
       <div id="guard-content">
       </div>
       <div id="login-content" style="">
         <form id="login-form" action="">
-          <div class="container">
-            <label><font color="#858585"><b>Username</b></font></label>
-            <input class="vrf-input" type="text" placeholder="Enter Username" name="uname" required>
-          </div>
         <div class="container">
           <label><font color="#858585"><b>Username</b></font></label>
           <input id="username-in" class="vrf-input" type="text" placeholder="Enter Username" name="uname" requtired>
@@ -65,6 +64,8 @@
         <input id="m" autocomplete="off" />
         <button id="send-msg-btn">Send</button>
       </form>
+    </div>
+    <div class="calendar-content" style="display: none;">
     </div>
   </body>
 </html>
