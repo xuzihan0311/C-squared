@@ -97,21 +97,19 @@
 
 .dropdown {
     position: fixed;
-    top: 10px; right: 20px;
+    top: 50px; right: 50px;
     background: #858585;
-    transition:0s 180s;
 }
 
 .dropdown:hover {
     position: fixed;
-    top: 10px; right: 20px;
+    top: 50px; right: 50px;
     background: #858585;
-    transition:0;
 }
 
 
 .dropdown-content {
-    display: none;
+    display: block;
     position: fixed;
     top: 50px; right: 0px;
     background-color: #eff6f6;
@@ -123,8 +121,6 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
-    opacity:1;
-    transition:0s;
 }
 
 
