@@ -20,7 +20,7 @@
     <script src="../controls/libraries/textshadow.js"></script>
   </head>
   <body class="no-margin">
-    <div id="guard-wrapper" style="">
+    <div id="guard-wrapper" style="display: none;">
       <div id="guard-content">
       </div>
       <div id="login-content" style="">
@@ -34,7 +34,7 @@
 
           <button id="register-btn" class="vrf-btn" type="submit">Register</button>
           <button id="login-btn" class="vrf-btn" type="submit">Login</button>
-          <input id="rmb-btn" type="checkbox" checked="checked"><font color="#858585">Remember me</font></input>
+          <input id="rmb-btn" type="checkbox"><font color="#858585">Remember me</font></input>
         </div>
         </form>
       </div>
@@ -50,10 +50,10 @@
         <div id="profile-btn">
           <img id="profile-icon" src="../resources/profile-icon-grey.png" alt="Profile">
         </div>
-        <div class="dropdown-content">
-              <h2 style="text-align: center; font-family: 'Comic Sans MS'; margin-bottom: 20px; margin-top: 10px;"><font color="#858585"><b>Welcome</b></font></h2>
-              <ul id="username" style="text-align: center; font-family: 'Comic Sans MS';"></ul>
-              <div id="logout" class="logout" style="text-align: center; font-family: 'Comic Sans MS'; border: 2px solid #bedada; width: 50%; margin-bottom: 10px; margin-top: 20px; margin-left: 40px";><font color="#858585"><b>Log Out</b></font></div>
+        <div class="dropdown-content" style="display: none;">
+              <div style="text-align: center; font-family: 'Comic Sans MS'; color: #858585; font-size: 20px; margin-top: 10px;"><b>Welcome!</b></div>
+              <div id="username" style="text-align: center; font-family: 'Comic Sans MS'; color: #858585; font-size: 15px;"><b>User</b></div>
+              <div id="logout-btn" class="logout" style="text-align: center; font-family: 'Comic Sans MS'; border: 2px solid #bedada; width: 50%; margin-bottom: 10px; margin-top: 20px; margin-left: 40px";><font color="#858585"><b>Log Out</b></font></div>
         </div>
       </div>
     </div>

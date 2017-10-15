@@ -1,5 +1,12 @@
 $( document ).ready(function() {
   
+  if (!Cookies.get("LoginUsername")) {
+    $("#guard-wrapper").css("display", "inline");
+    if (Cookies.get("RmbUsername")) {
+      $("#username-in").val(Cookies.get("RmbUsername"));
+    }
+  }
+  
   $("#chat-btn").mouseover(function() {
     $("#chat-icon").attr("src", "../resources/chat-icon-blue.png");
   })
@@ -79,5 +86,33 @@ $( document ).ready(function() {
   .mouseout(function() {
     $("#profile-icon").attr("src", "../resources/profile-icon-grey.png");
   });
+  
+  $("#profile-btn").click(function() {
+    $("#username").text(Cookies.get("LoginUsername"));
+    $(".dropdown-content").attr("style", "display: inline;");
+  });
+  
+  $(document).on("mouseup.hideDocClick", function(e) {
+    var container = $(".dropdown-content");
+
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        container.attr("style", "display: none;");
+    }
+  });
+  
+  $("#logout-btn").click(function() {
+    $(".dropdown-content").attr("style", "display: none;");
+    $("#chat-btn").trigger("click");
+    $("#messages").empty();
+    Cookies.remove("LoginUsername");
+    $("#guard-wrapper").css("display", "inline");
+    $("#username-in").val("");
+    if (Cookies.get("RmbUsername")) {
+      $("#username-in").val(Cookies.get("RmbUsername"));
+    }
+    $("#password-in").val("");
+  })
   
 });

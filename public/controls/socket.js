@@ -8,6 +8,14 @@ $(function () {
     return false;
   });
 
+  $("#rmb-btn").click(function() {
+      if ($("#rmb-btn").attr("checked")) {
+          $("#rmb-btn").removeAttr("checked");
+      } else {
+          $("#rmb-btn").attr("checked", true);
+      }
+  })
+
   $("#login-btn").click(function() {
       socket.emit('login', { username: $('#username-in').val(), password: $('#password-in').val() });
       return false;
@@ -28,8 +36,11 @@ $(function () {
 
   socket.on('logging in', function(username) {
       //do everything we need when logged in with this username
-      Cookies.set("LoginUsername", username, { expires: 7 });
-      $('#guard-wrapper').css("display", "none");
+      Cookies.set("LoginUsername", username, { expires: 1 });
+      if ($("#rmb-btn").attr("checked")) {
+          Cookies.set("RmbUsername", username, { expires: 365 });
+      }
+      $("#guard-wrapper").css("display", "none");
   });
 
   socket.on('failed login', function() {
