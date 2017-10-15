@@ -13,7 +13,7 @@ $(function () {
   });
 
   socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg));
+    $('#messages').append($('<span>').text(msg));
     window.scrollTo(0, document.body.scrollHeight);
   });
 
@@ -28,4 +28,17 @@ $(function () {
   socket.on('failed login', function() {
       //set incorrect username or password text field
   });
+  $("#messages").lettering();
+        var text = $("#jquerybuddy"),
+        numLetters = text.find("span").length;
+        function randomBlurize() {
+        text.find("span:nth-child(" + (Math.floor(Math.random()*numLetters)+1) + ")")
+        .animate({
+          'textShadowBlur': Math.floor(Math.random()*25)+4,
+          'textShadowColor': 'rgba(0,100,0,' + (Math.floor(Math.random()*200)+55) + ')'
+        });
+    // Call itself recurssively
+        setTimeout(randomBlurize, 100);
+        randomBlurize();
+    }
 });
