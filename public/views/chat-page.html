@@ -8,6 +8,7 @@
     <script src="../controls/libraries/jquery-3.2.1.min.js"></script>
     <script src="../controls/libraries/moment.min.js"></script>
     <script src="../controls/libraries/fullcalendar.js"></script>
+    <script src="../controls/libraries/js.cookie.js"></script>
     <script src="../controls/event.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-1.11.1.js"></script> -->
@@ -19,33 +20,42 @@
     <script src="../controls/libraries/textshadow.js"></script>
   </head>
   <body class="no-margin">
-    <div id="guard-wrapper"> --style="display: none;"
+    <div id="guard-wrapper" style="display: none;">
       <div id="guard-content">
       </div>
       <div id="login-content" style="">
         <form id="login-form" action="">
         <div class="container">
           <label><font color="#858585"><b>Username</b></font></label>
-          <input id="username-in" class="vrf-input" type="text" placeholder="Enter Username" name="uname" required>
+          <input id="username-in" class="vrf-input" type="text" placeholder="Enter Username" name="uname">
 
           <label><font color="#858585"><b>Password</b></font></label>
-          <input id="password-in" class="vrf-input" type="password" placeholder="Enter Password" name="psw" required>
+          <input id="password-in" class="vrf-input" type="password" placeholder="Enter Password" name="psw">
 
           <button id="register-btn" class="vrf-btn" type="submit">Register</button>
           <button id="login-btn" class="vrf-btn" type="submit">Login</button>
-          <input id="rmb-btn" type="checkbox" checked="checked"><font color="#858585">Remember me</font></input>
+          <input id="rmb-btn" type="checkbox"><font color="#858585">Remember me</font></input>
         </div>
-      </form>
-    </div>
-</div>
+        </form>
+        <div id="error-msg" style="display: none;">Invalid input!</div>
+      </div>
+      </div>
     <div class="header no-margin">
       <div style="text-align: center;">
         <a href="">
           <img src="../resources/logo.png" alt="C-squared" style="margin-top: 7px;">
         </a>
       </div>
-      <div id="profile-btn">
-        <img id="profile-icon" src="../resources/profile-icon-grey.png" alt="Profile">
+
+      <div class="dropdown">
+        <div id="profile-btn">
+          <img id="profile-icon" src="../resources/profile-icon-grey.png" alt="Profile">
+        </div>
+        <div class="dropdown-content" style="display: none;">
+              <div style="text-align: center; font-family: 'Comic Sans MS'; color: #858585; font-size: 20px; margin-top: 10px;"><b>Welcome!</b></div>
+              <div id="username" style="text-align: center; font-family: 'Comic Sans MS'; color: #858585; font-size: 15px;"><b>User</b></div>
+              <div id="logout-btn" class="logout" style="text-align: center; font-family: 'Comic Sans MS'; border: 2px solid #bedada; width: 50%; margin-bottom: 10px; margin-top: 20px; margin-left: 40px";><font color="#858585"><b>Log Out</b></font></div>
+        </div>
       </div>
     </div>
     <div class="menu-bar">

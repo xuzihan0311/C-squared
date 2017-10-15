@@ -37,7 +37,8 @@ io.on('connection', function(socket){
     socket.on('chat message', function(msg){
         io.emit('chat message', msg);
         if (msg.indexOf("/search") > -1) {
-            bingSearch(msg.substring(8, msg.length), function(search) {
+            var ind = msg.indexOf("/search");
+            bingSearch(msg.substring(ind + 8, msg.length), function(search) {
                 io.emit('bing-search', search);
             });
         }
@@ -67,7 +68,7 @@ io.on('connection', function(socket){
                         if (rowCount == 1) {
                             io.emit('logging in', credentials.username);
                         } else {
-                            io.emit('failed login','Invalid login credentials');
+                            io.emit('failed login','Invalid login credentials!');
                         }
                     }
                 );
@@ -83,7 +84,7 @@ io.on('connection', function(socket){
             });
           request = new Request(query, function(err, rowCount, rows) {
                     if (err) {
-                        console.log(err);
+                        io.emit('failed login','Username already exists!');
                     } else {
                         io.emit('logging in', credentials.username);
                     }

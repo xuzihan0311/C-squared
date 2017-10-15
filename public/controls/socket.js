@@ -1,18 +1,41 @@
 $(function () {
   var socket = io();
   $('form').submit(function(){
-    socket.emit('chat message', $('#m').val());
+    if ($('#m').val()) {
+      socket.emit('chat message', Cookies.get("LoginUsername") + ": " + $('#m').val());
+    }
     $('#m').val('');
     return false;
   });
 
+  $("#rmb-btn").click(function() {
+      if ($("#rmb-btn").attr("checked")) {
+          $("#rmb-btn").removeAttr("checked");
+      } else {
+          $("#rmb-btn").attr("checked", true);
+      }
+  })
+
   $("#login-btn").click(function() {
-      socket.emit('login', { username: $('#username-in').val(), password: $('#password-in').val() });
+      $("#error-msg").attr("style", "display: none;");
+      if ($("#username-in").val() && $("#password-in").val()) {
+          socket.emit('login', { username: $('#username-in').val(), password: $('#password-in').val() });
+      } else {
+          $("#error-msg").text("Invalid input!");
+          $("#error-msg").attr("style", "display: inline;");
+      }
       return false;
   });
 
   $("#register-btn").click(function() {
-      socket.emit('register', { username: $('#username-in').val(), password: $('#password-in').val() });
+      $("#error-msg").attr("style", "display: none;");
+      if ($("#username-in").val() && $("#password-in").val()) {
+          socket.emit('register', { username: $('#username-in').val(), password: $('#password-in').val() });
+      } else {
+          $("#error-msg").text("Invalid input!");
+          $("#error-msg").attr("style", "display: inline;");
+      }
+      return false;
   });
 
   socket.on('createEvent', function(eventItem) {
@@ -35,14 +58,21 @@ $(function () {
 
   socket.on('logging in', function(username) {
       //do everything we need when logged in with this username
-      $('#guard-wrapper').css("display", "none");
-      socket.emit('getCalendar', username);
-      //TODO finish loading stuff for this username Login
+      Cookies.set("LoginUsername", username, { expires: 1 });
+      if ($("#rmb-btn").attr("checked")) {
+          Cookies.set("RmbUsername", username, { expires: 365 });
+      } else {
+          if (Cookies.get("RmbUsername") && Cookies.get("RmbUsername") == username) {
+              Cookies.remove("RmbUsername");
+          }
+      }
+      $("#guard-wrapper").css("display", "none");
   });
 
-  socket.on('failed login', function() {
+  socket.on('failed login', function(message) {
       //set incorrect username or password text field
-      //TODO invoke invalid text
+      $("#error-msg").text(message);
+      $("#error-msg").attr("style", "display: inline;");
   });
 
   socket.on('transition', function(name) {
