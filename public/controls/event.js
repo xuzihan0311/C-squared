@@ -27,7 +27,7 @@ $( document ).ready(function() {
   });
  
   $("#calendar-btn").click(function() {
-    
+
   });
   
   $("#profile-btn").mouseover(function() {

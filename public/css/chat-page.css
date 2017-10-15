@@ -154,12 +154,11 @@ span.psw {
     width: calc(100% - 82px);
     position: absolute;
     top: 50px; left: 82px;
-    margin-bottom: 50px;
     z-index: 500;
 }
 
 #msg-content {
-    
+    margin-bottom: 50px;
 }
 
 #msg-input {
@@ -196,3 +195,12 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 #messages { list-style-type: none; margin: 0; padding: 0; }
 #messages li { padding: 5px 10px; }
 #messages li:nth-child(odd) { background: #eee; }
+
+.calendar-content {
+    min-height: calc(100% - 50px);
+    width: calc(100% - 82px);
+    position: absolute;
+    top: 50px; left: 82px;
+    z-index: 800;
+    background-color: transparent;
+}
