@@ -3,8 +3,11 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "async": "^2.5.0",
     "botbuilder": "^3.11.0",
     "fullcalendar": "^3.6.1",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.4.2",
     "node-bing-api": "^3.2.2",
     "restify": "^6.0.1",
     "tedious": "^2.0.0"

@@ -7,9 +7,12 @@ $(function () {
   });
 
   $("#login-btn").click(function() {
-      var username = document.getElementById('username-in');
-      var password = document.getElementById('password-in');
-      socket.emit('login', username, password);
+      socket.emit('login', { username: $('#username-in').val(), password: $('#password-in').val() });
+      return false;
+  });
+
+  $("#register-btn").click(function() {
+      socket.emit('register', { username: $('#username-in').val(), password: $('#password-in').val() });
   });
 
   socket.on('chat message', function(msg){
@@ -23,10 +26,13 @@ $(function () {
 
   socket.on('logging in', function(username) {
       //do everything we need when logged in with this username
+      $('#guard-wrapper').css("display", "none");
+      //TODO finish loading stuff for this username Login
   });
 
   socket.on('failed login', function() {
       //set incorrect username or password text field
+      //TODO invoke invalid text
   });
   $("#messages").lettering();
         var text = $("#jquerybuddy"),
