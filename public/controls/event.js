@@ -112,6 +112,7 @@ $( document ).ready(function() {
     $("#username-in").val("");
     if (Cookies.get("RmbUsername")) {
       $("#username-in").val(Cookies.get("RmbUsername"));
+      $('#rmb-btn').attr("checked", true);
     }
     $("#password-in").val("");
   })
