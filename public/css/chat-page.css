@@ -48,6 +48,8 @@
     z-index: 2000;
 }
 
+
+
 .vrf-input {
     color: #858585;
     font-size: 100%;
@@ -78,16 +80,53 @@
 }
 
 #cancel-btn {
-    width: 100px;
-    padding: 10px 18px;
-    color: #ffffff;
-    background-color: #858585;
-    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    top:0; bottom:0; left:0; right:0;
+    display:block;
+    opacity: 0.5;
+    filter: alpha(opacity = 0);
+    background: #858585;
+    z-index: 2000;
 }
 
 #cancel-btn:hover {
     opacity: 0.8;
 }
+
+.dropdown {
+    position: fixed;
+    top: 10px; right: 20px;
+    background: #858585;
+    transition:0s 180s;
+}
+
+.dropdown:hover {
+    position: fixed;
+    top: 10px; right: 20px;
+    background: #858585;
+    transition:0;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: fixed;
+    top: 50px; right: 0px;
+    background-color: #eff6f6;
+    min-width: 160px;
+    box-shadow: 10px 20px 20px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 2px solid #bedada;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity:1;
+    transition:0s;
+}
+
 
 /* Full-width inputs */
 input[type=text], input[type=password] {
