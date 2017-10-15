@@ -11,12 +11,13 @@
     border-bottom: 2px solid #71b0b0;
     position: fixed;
     top: 0;
-    z-index: 3000;
+    z-index: 1500;
 }
 
 #profile-btn {
     position: fixed;
-    top: 10px; right: 10px;
+    top: 10px; right: 20px;
+    cursor: pointer;
 }
 
 #guard-content {
@@ -28,13 +29,13 @@
     opacity: 0.5;
     filter: alpha(opacity = 0);
     background: #858585;
-    z-index: 1500;
+    z-index: 2000;
 }
 
 #login-content {
     max-height: 500px;
     max-width: 300px;
-    z-index: 2000;
+    z-index: 2500;
 }
 
 #login-form {
@@ -154,7 +155,7 @@ span.psw {
     position: absolute;
     top: 50px; left: 82px;
     margin-bottom: 50px;
-    z-index: 500
+    z-index: 500;
 }
 
 #msg-content {
@@ -177,7 +178,7 @@ span.psw {
 }
 
 #send-msg-btn {
-    background-color: #e2efef;
+    background-color: #eff6f6;
     color: #0abab5;
     font-weight: bold;
     cursor: pointer;
