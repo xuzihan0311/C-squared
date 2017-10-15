@@ -5,6 +5,9 @@
     <title>C-squared</title>
     <script src="../controls/libraries/jquery-3.2.1.min.js"></script>
     <script src="../controls/event.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="../controls/socket.js"></script>
     <link rel="stylesheet" href="../css/chat-page.css">
   </head>
   <body class="no-margin">
@@ -16,17 +19,21 @@
           <div class="container">
             <label><font color="#858585"><b>Username</b></font></label>
             <input class="vrf-input" type="text" placeholder="Enter Username" name="uname" required>
-
-            <label><font color="#858585"><b>Password</b></font></label>
-            <input class="vrf-input" type="password" placeholder="Enter Password" name="psw" required>
-
-            <button id="register-btn" class="vrf-btn" type="submit">Register</button>
-            <button id="login-btn" class="vrf-btn" type="submit">Login</button>
-            <input id="rmb-btn" type="checkbox" checked="checked"><font color="#858585">Remember me</font></input>
           </div>
-        </form>
-      </div>
+        <div class="container">
+          <label><font color="#858585"><b>Username</b></font></label>
+          <input id="username-in" class="vrf-input" type="text" placeholder="Enter Username" name="uname" requtired>
+
+          <label><font color="#858585"><b>Password</b></font></label>
+          <input id="password-in" class="vrf-input" type="password" placeholder="Enter Password" name="psw" required>
+
+          <button id="register-btn" class="vrf-btn" type="submit">Register</button>
+          <button id="login-btn" class="vrf-btn" type="submit">Login</button>
+          <input id="rmb-btn" type="checkbox" checked="checked"><font color="#858585">Remember me</font></input>
+        </div>
+      </form>
     </div>
+</div>
     <div class="header no-margin">
       <div style="text-align: center;">
         <a href="">
@@ -53,27 +60,6 @@
         <input id="m" autocomplete="off" />
         <button id="send-msg-btn">Send</button>
       </form>
-      <script src="/socket.io/socket.io.js"></script>
-      <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-      <script>
-      $(function () {
-        console.log("do something");
-        var socket = io();
-        $('form').submit(function(){
-          // disallow empty msgs
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
-        socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
-          window.scrollTo(0, document.body.scrollHeight);
-        });
-        socket.on('bing-search', function(url) {
-            window.open(url);
-        });
-      });
-      </script>
     </div>
   </body>
 </html>
