@@ -2,7 +2,7 @@ $(function () {
   var socket = io();
   $('form').submit(function(){
     if ($('#m').val()) {
-      socket.emit('chat message', $('#m').val());
+      socket.emit('chat message', Cookies.get("LoginUsername") + ": " + $('#m').val());
     }
     $('#m').val('');
     return false;
@@ -17,12 +17,25 @@ $(function () {
   })
 
   $("#login-btn").click(function() {
-      socket.emit('login', { username: $('#username-in').val(), password: $('#password-in').val() });
+      $("#error-msg").attr("style", "display: none;");
+      if ($("#username-in").val() && $("#password-in").val()) {
+          socket.emit('login', { username: $('#username-in').val(), password: $('#password-in').val() });
+      } else {
+          $("#error-msg").text("Invalid input!");
+          $("#error-msg").attr("style", "display: inline;");
+      }
       return false;
   });
 
   $("#register-btn").click(function() {
-      socket.emit('register', { username: $('#username-in').val(), password: $('#password-in').val() });
+      $("#error-msg").attr("style", "display: none;");
+      if ($("#username-in").val() && $("#password-in").val()) {
+          socket.emit('register', { username: $('#username-in').val(), password: $('#password-in').val() });
+      } else {
+          $("#error-msg").text("Invalid input!");
+          $("#error-msg").attr("style", "display: inline;");
+      }
+      return false;
   });
 
   socket.on('chat message', function(msg){
@@ -39,14 +52,20 @@ $(function () {
       Cookies.set("LoginUsername", username, { expires: 1 });
       if ($("#rmb-btn").attr("checked")) {
           Cookies.set("RmbUsername", username, { expires: 365 });
+      } else {
+          if (Cookies.get("RmbUsername") && Cookies.get("RmbUsername") == username) {
+              Cookies.remove("RmbUsername");
+          }
       }
       $("#guard-wrapper").css("display", "none");
   });
 
-  socket.on('failed login', function() {
+  socket.on('failed login', function(message) {
       //set incorrect username or password text field
-      //TODO invoke invalid text
+      $("#error-msg").text(message);
+      $("#error-msg").attr("style", "display: inline;");
   });
+  
   $("#messages").lettering();
         var text = $("#jquerybuddy"),
         numLetters = text.find("span").length;

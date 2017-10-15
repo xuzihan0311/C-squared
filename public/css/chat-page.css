@@ -66,15 +66,28 @@
 
 #login-form {
     border: 3px solid #71b0b0;
-    max-height: 286px;
-    max-width: 300px;
+    height: 286px;
+    width: 300px;
     position: fixed;
     top: calc(100%/2 - 143px); left: calc(100%/2 - 150px);
     background-color: #ffffff;
     z-index: 2000;
 }
 
-
+#error-msg {
+    height: 50px;
+    width: 300px;
+    position: fixed;
+    top: calc(100%/2 - 143px + 286px); left: calc(100%/2 - 150px);
+    color: #858585;
+    background-color: #ffffff;
+    text-align: center;
+    border-left: 3px solid #71b0b0;
+    border-bottom: 3px solid #71b0b0;
+    border-right: 3px solid #71b0b0;
+    padding-top: 15px; 
+    z-index: 2000;
+}
 
 .vrf-input {
     color: #858585;

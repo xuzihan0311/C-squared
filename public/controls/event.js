@@ -4,6 +4,7 @@ $( document ).ready(function() {
     $("#guard-wrapper").css("display", "inline");
     if (Cookies.get("RmbUsername")) {
       $("#username-in").val(Cookies.get("RmbUsername"));
+      $('#rmb-btn').attr("checked", true);
     }
   }
   
@@ -44,25 +45,25 @@ $( document ).ready(function() {
     
   });
  
-  var newEvent = 
-  {
-    title:"Test", 
-    start:new Date("October 15, 2017")
-  };
-  
-  var newEvents = 
-  [
-  {
-   title: "Test1",
-   start:new Date("October 15, 2017")
-  },
-  {
-    title: "Test2",
-    start:new Date("October 16, 2017")
-  }
- ]
-  
-  $(".calendar-holder").fullCalendar('renderEvents', newEvents, true);
+ //  var newEvent = 
+ //  {
+ //    title:"Test", 
+ //    start:new Date("October 15, 2017")
+ //  };
+ //  
+ //  var newEvents = 
+ //  [
+ //  {
+ //   title: "Test1",
+ //   start:new Date("October 15, 2017")
+ //  },
+ //  {
+ //    title: "Test2",
+ //    start:new Date("October 16, 2017")
+ //  }
+ // ]
+ //  
+ //  $(".calendar-holder").fullCalendar('renderEvents', newEvents, true);
  
   $("#calendar-btn").click(function() {
     if (!$("#calendar-btn").hasClass("menu-button-open")) {
