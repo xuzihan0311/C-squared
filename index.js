@@ -18,7 +18,7 @@ var config =
         options: {
             database: 'CsquaredDatabase'
         }
-    }
+    };
 var conn = new connection(config);
 
 app.use(express.static(__dirname + '/public'));
@@ -40,18 +40,19 @@ io.on('connection', function(socket){
     socket.on('login', function(username, password) {
         //handle login: query SQL table if not there then respond with error code
         //fetch corresponding calendar
-        conn.on('connect', function(err)) {
+        conn.on('connect', function(err) {
             if (err) {
                 console.log(err);
             } else {
-                queryDatabase(username, password, function(responseCode));
-                if (responseCode == 1) {
-                    io.emit('logging in', username);
-                } else {
-                    io.emit('failed login');
-                }
+                queryDatabase(username, password, function(responseCode) {
+                    if (responseCode == 1) {
+                        io.emit('logging in', username);
+                    } else {
+                        io.emit('failed login');
+                    }
+                });
             }
-        }
+        });
     });
 
     socket.on('register', function(username, password) {

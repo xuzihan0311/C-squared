@@ -25,7 +25,7 @@ $(function () {
       //do everything we need when logged in with this username
   });
 
-  socket.on('failed login') {
+  socket.on('failed login', function() {
       //set incorrect username or password text field
-  }
+  });
 });
