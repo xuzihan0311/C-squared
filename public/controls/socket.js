@@ -1,7 +1,9 @@
 $(function () {
   var socket = io();
   $('form').submit(function(){
-    socket.emit('chat message', $('#m').val());
+    if ($('#m').val()) {
+      socket.emit('chat message', $('#m').val());
+    }
     $('#m').val('');
     return false;
   });
@@ -26,8 +28,8 @@ $(function () {
 
   socket.on('logging in', function(username) {
       //do everything we need when logged in with this username
+      Cookies.set("LoginUsername", username, { expires: 7 });
       $('#guard-wrapper').css("display", "none");
-      //TODO finish loading stuff for this username Login
   });
 
   socket.on('failed login', function() {

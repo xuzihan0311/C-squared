@@ -210,6 +210,10 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
     z-index: 900;
     background-color: transparent;
 }
+
+.calendar-holder {
+    margin:20px 15px;
+}
       #messages { list-style-type: none; margin: 0; padding: 0; font-size:15px; font-family: "Comic Sans MS", cursive, sans-serif; margin-top: 0; display: block; }
       #messages span { padding: 5px 10px; display:block; }
       #messages span:nth-child(odd) { background: #eee; display:block; }
