@@ -44,6 +44,7 @@ $(function () {
   });
 
   socket.on('load calendar', function(e) {
+      console.log("Hit Load Calendar");
       $(".calendar-holder").fullCalendar('renderEvents', e, true);
   });
 
@@ -67,6 +68,7 @@ $(function () {
           }
       }
       $("#guard-wrapper").css("display", "none");
+      socket.emit('getCalendar', username);
   });
 
   socket.on('failed login', function(message) {

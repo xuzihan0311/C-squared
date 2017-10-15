@@ -43,12 +43,14 @@ io.on('connection', function(socket){
             });
         }
         if (msg.indexOf("/event") > -1) {
-            updateCreator(msg.substring(7,msg.length), function(eventItem) {
+            var ind = msg.indexOf("/event");
+            updateCreator(msg.substring(ind + 7,msg.length), function(eventItem) {
                 io.emit('createEvent', eventItem); //update creator calendar
             });
         }
         if (msg.indexOf("/rsvp") > -1) {
-            handleRSVP(msg.substring(6, msg.length), function(name) {
+            var ind = msg.indexOf("/rsvp");
+            handleRSVP(msg.substring(ind + 6, msg.length), function(name) {
                 io.emit('checkEvent', name);
             });
         }
@@ -108,6 +110,7 @@ io.on('connection', function(socket){
                          } else {
                              var str = JSON.parse(events);
                              currentEvents = str;
+                             console.log("HIT HERE");
                              io.emit('load calendar', str);
                          }
                      });
@@ -158,6 +161,7 @@ io.on('connection', function(socket){
      });
 
      socket.on('check event table', function(e) {
+         console.log(e);
          var event = [{
              title: "",
              start: ""
@@ -172,7 +176,7 @@ io.on('connection', function(socket){
                      {
                          if (rowCount == 1) {
                              //io.emit('createEvent', );
-                             //console.log(event);
+                             console.log(event);
                              io.emit('load calendar', event);
                          }
                      }
