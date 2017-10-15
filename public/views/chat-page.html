@@ -3,20 +3,20 @@
 <html class="no-margin">
   <head>
     <title>C-squared</title>
-    <link rel='stylesheet' href='../css/libraries/fullcalendar.css' />
+    <link rel='stylesheet' href='../css/libraries/fullcalendar.css'>
+    <link rel="stylesheet" href="../css/chat-page.css">
     <script src="../controls/libraries/jquery-3.2.1.min.js"></script>
-    <script src='../controls/libraries/moment.min.js'></script>
-    <script src='../controls/libraries/fullcalendar.js'></script>
+    <script src="../controls/libraries/moment.min.js"></script>
+    <script src="../controls/libraries/fullcalendar.js"></script>
     <script src="../controls/event.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.11.1.js"></script> -->
     <script src="../controls/socket.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> -->
     <script src="../controls/libraries/jquery.lettering.js"></script>
     <script src="../controls/libraries/modernizr-1.7.min.js"></script>
     <script src="../controls/libraries/color.js"></script>
     <script src="../controls/libraries/textshadow.js"></script>
-    <link rel="stylesheet" href="../css/chat-page.css">
   </head>
   <body class="no-margin">
     <div id="guard-wrapper" style="display: none;">
@@ -49,7 +49,7 @@
       </div>
     </div>
     <div class="menu-bar">
-      <div id="chat-btnn" class="menu-button menu-button-open" style="text-align: center;">
+      <div id="chat-btn" class="menu-button menu-button-open" style="text-align: center;">
         <img id="chat-icon" src="../resources/chat-icon-blue.png" alt="Chat" style="margin-top: 10px;">
       </div>
       <div id="calendar-btn" class="menu-button" style="text-align: center;">
@@ -66,6 +66,8 @@
       </form>
     </div>
     <div class="calendar-content" style="display: none;">
+      <div class="calendar-holder">
+      </div>
     </div>
   </body>
 </html>

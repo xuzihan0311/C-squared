@@ -138,18 +138,21 @@ span.psw {
     z-index: 1000;
 }
 
+.menu-button {
+    background-color: transparent;
+    height: 75px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
 .menu-button-open {
     background-color: #ffffff;
 }
 
-.menu-button {
-    height: 75px;
-    width: 100%;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
 .chat-content {
+    background-color: #ffffff;
     min-height: calc(100% - 100px);
     width: calc(100% - 82px);
     position: absolute;
@@ -197,12 +200,14 @@ body { font: 13px Helvetica, Arial; }
 form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
 form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
 form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+
 .calendar-content {
+    background-color: #ffffff;
     min-height: calc(100% - 50px);
     width: calc(100% - 82px);
     position: absolute;
     top: 50px; left: 82px;
-    z-index: 800;
+    z-index: 900;
     background-color: transparent;
 }
       #messages { list-style-type: none; margin: 0; padding: 0; font-size:15px; font-family: "Comic Sans MS", cursive, sans-serif; margin-top: 0; display: block; }
