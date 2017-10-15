@@ -2,7 +2,7 @@ $(function () {
   var socket = io();
   $('form').submit(function(){
     if ($('#m').val()) {
-      socket.emit('chat message', Cookies.get("LoginUsername") + ": " + $('#m').val());
+      socket.emit('chat message', cookies.get("LoginUsername") + ": " + $('#m').val());
     }
     $('#m').val('');
     return false;
@@ -58,13 +58,16 @@ $(function () {
   });
 
   socket.on('logging in', function(username) {
+      
       //do everything we need when logged in with this username
-      Cookies.set("LoginUsername", username, { expires: 1 });
+      if (!cookies.get("LoginUsername")) {
+          cookies.set("LoginUsername", username, { expires: 1 });
+      }
       if ($("#rmb-btn").attr("checked")) {
-          Cookies.set("RmbUsername", username, { expires: 365 });
+          cookies.set("RmbUsername", username, { expires: 365 });
       } else {
-          if (Cookies.get("RmbUsername") && Cookies.get("RmbUsername") == username) {
-              Cookies.remove("RmbUsername");
+          if (cookies.get("RmbUsername") && cookies.get("RmbUsername") == username) {
+              cookies.del("RmbUsername");
           }
       }
       $("#guard-wrapper").css("display", "none");

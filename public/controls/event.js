@@ -1,13 +1,13 @@
 $( document ).ready(function() {
   var socket = io();
-  if (!Cookies.get("LoginUsername")) {
+  if (!cookies.get("LoginUsername")) {
     $("#guard-wrapper").css("display", "inline");
-    if (Cookies.get("RmbUsername")) {
-      $("#username-in").val(Cookies.get("RmbUsername"));
+    if (cookies.get("RmbUsername")) {
+      $("#username-in").val(cookies.get("RmbUsername"));
       $('#rmb-btn').attr("checked", true);
     }
 } else {
-    socket.emit('getCalendar', Cookies.get("LoginUsername"));
+    socket.emit('getCalendar', cookies.get("LoginUsername"));
 }
 
   $("#chat-btn").mouseover(function() {
@@ -72,7 +72,7 @@ $( document ).ready(function() {
   });
 
   $("#profile-btn").click(function() {
-    $("#username").text(Cookies.get("LoginUsername"));
+    $("#username").text(cookies.get("LoginUsername"));
     $(".dropdown-content").attr("style", "display: inline;");
   });
 
@@ -91,11 +91,11 @@ $( document ).ready(function() {
     $(".calendar-holder").fullCalendar('removeEvents');
     $("#chat-btn").trigger("click");
     $("#messages").empty();
-    Cookies.remove("LoginUsername");
+    cookies.del("LoginUsername");
     $("#guard-wrapper").css("display", "inline");
     $("#username-in").val("");
-    if (Cookies.get("RmbUsername")) {
-      $("#username-in").val(Cookies.get("RmbUsername"));
+    if (cookies.get("RmbUsername")) {
+      $("#username-in").val(cookies.get("RmbUsername"));
       $('#rmb-btn').attr("checked", true);
     }
     $("#password-in").val("");
